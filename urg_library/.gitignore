@@ -1,0 +1,12 @@
+
+*.exe
+
+*.o
+
+*.dll
+
+*.a
+
+*.zip
+
+release/

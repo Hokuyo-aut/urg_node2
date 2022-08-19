@@ -1,0 +1,18 @@
+urg_node2:
+  ros__parameters:
+    ip_address: '192.168.0.11'
+    ip_port: 10940
+    frame_id : 'laser_2nd'
+    calibrate_time : false
+    synchronize_time : false
+    publish_intensity : false
+    publish_multiecho : false
+    error_limit : 4
+    error_reset_period : 5.0
+    diagnostics_tolerance : 0.05
+    diagnostics_window_time : 5.0
+    time_offset : 0.0
+    angle_min : -3.14
+    angle_max : 3.14
+    skip : 0
+    cluster : 1

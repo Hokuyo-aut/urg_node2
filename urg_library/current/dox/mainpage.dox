@@ -1,0 +1,120 @@
+/*!
+  \mainpage URG Library document
+
+  \~japanese
+  \section mainpage_what 概要
+
+  これは、レーザ距離センサ URG シリーズ用のオープンソースライブラリです。\n
+  このライブラリは、以下の環境にて動作を確認しています。
+
+- Visual C++ 2005
+- Visual C++ 2010
+- gcc 4.6.0 (Linux)
+- gcc 4.6.2 (MinGW)
+
+  \~english
+  \section mainpage_what Abstract
+
+  This is an open source library for Hokuyo URG laser range scanners.  This library has been tested for the following environments.
+
+- Visual C++ 2005
+- Visual C++ 2010
+- gcc 4.6.0 (Linux)
+- gcc 4.6.2 (MinGW)
+
+  \~japanese
+  \section mainpage_license ライセンス
+
+  (C言語)修正 BSD ライセンスに基づいて配布します。\n
+  (C++)LGPL ライセンスに基づいて配布します。\n
+  ライセンスの詳細はライブラリ付属の <a href="COPYRIGHT.txt">COPYRIGHT.txt</a> ファイルをご覧下さい。
+
+
+  \~english
+  \section mainpage_license License
+
+  (C language)This software is licensed under the New BSD license.\n
+  (C++)This software is licensed under the LGPL license.\n
+  See the <a href="COPYRIGHT.txt">COPYRIGHT.txt</a> for the actual license text.\n
+
+
+  \~japanese
+  \section mainpage_download ダウンロード
+
+  このライブラリの zip ファイルは、以下のアドレスからダウンロードできます。
+  - http://sourceforge.net/projects/urgnetwork/files/urg_library/
+
+  開発版のソースコードは Mercurial リポジトリで管理されています。
+  \verbatim
+hg clone http://hg.code.sf.net/p/urgnetwork/urg_library \endverbatim
+
+
+  \~english
+  \section mainpage_download Download
+
+  Use the below link to download the urg_library zip file.
+  - http://sourceforge.net/projects/urgnetwork/files/urg_library/
+
+  The latest source code can be cloned from the Mercurial repository:
+  \verbatim
+hg clone http://hg.code.sf.net/p/urgnetwork/urg_library \endverbatim
+
+  \~japanese
+  \section mainpage_compile_and_usage ライブラリと、サンプルプログラムのコンパイル
+
+  - Windows(Visual Studio)
+    - \subpage usage_windows_vcproj_page
+    - \subpage usage_windows_bat_page
+
+  - Windows(MinGW), Linux, Mac
+    - \subpage usage_gcc_page
+
+
+  \~english
+  \section mainpage_compile_and_usage Building the library and sample programs
+
+  - Windows(Visual Studio)
+    - \subpage usage_windows_vcproj_page
+    - \subpage usage_windows_bat_page
+
+  - Windows(MinGW), Linux, Mac
+    - \subpage usage_gcc_page
+
+
+  \~japanese
+  \section mainpage_library ライブラリの使い方
+
+  - \subpage library_tutorial_page
+  - \subpage library_sample_page
+
+  - ライブラリ API
+    - \ref urg_sensor.h
+    - \ref urg_utils.h
+
+
+  \~english
+  \section mainpage_library Library tutorial
+
+  - \subpage library_tutorial_page
+  - \subpage library_sample_page
+
+  - Library API
+    - \ref urg_sensor.h
+    - \ref urg_utils.h
+
+
+  \~japanese
+  \section mainpage_support 問い合わせ先
+
+  質問や要望は、URG Networkのフォーラム、もしくはtwitterアカウント(\@UrgNetwork)までお願いします。\n
+  - <a href="http://sourceforge.net/p/urgnetwork/discussion">UrgNetwork フォーラム</a>\n
+  - <a href="https://twitter.com/intent/tweet?screen_name=UrgNetwork">Tweet to \@UrgNetwork</a>
+
+  \~english
+  \section mainpage_support Support
+
+  Send your questions, requests and comments to the URG Network forum or twitter account(\@UrgNetwork).\n
+  - <a href="http://sourceforge.net/p/urgnetwork/discussion">UrgNetwork Forum</a>\n
+  - <a href="https://twitter.com/intent/tweet?screen_name=UrgNetwork">Tweet to \@UrgNetwork</a>
+
+*/

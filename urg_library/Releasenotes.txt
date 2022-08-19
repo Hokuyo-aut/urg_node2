@@ -1,0 +1,88 @@
+2019-10-29
+	* 1.2.5 released.
+	* Added urg_t_initialize function.
+	* Fixed sync_time_stamp sample.
+
+2019-08-20
+	* 1.2.4 released.
+	* Fixed get_sensor_time_stamp to support timestamp offset.
+	* Changed is_open to return urg.is_active.
+	* Added handshake samples.
+
+2018-06-01
+	* 1.2.3 released.
+	* Added x64 setting on VS2010.
+	* Added VS2015, VS2017 solution.
+	* Changed startup project of VS solution from urg to get_distance.
+
+2017-11-27
+	* 1.2.2 released.
+	* Fixed bugs on angle calculating function.
+
+2017-9-27
+	* 1.2.1 released.
+	* Fixed bugs on angle calculating function (calculating incorrectly when using grouping).
+	* Fixed bugs on function that informs you whether the sensor is stable or not in urg_sensor.c.
+
+2015-10-21
+	* 1.2.0 released.
+	* Fixed bugs on serial communication.
+	* Fixed bugs on urg_sensor_state in urg_sensor.c.
+
+2015-05-07
+	* 1.1.9 released.
+	* Added the files with translation macros.
+	* Fixed bugs on doxygen examples.
+	* Fixed the split_comment.rb Ruby script.
+	* Fixed bugs on urg_open in urg_sensor.c.
+	* Fixed compile error of viewer_sdl.
+
+2015-01-08
+	* Fixed link error on MinGW.
+
+2014-09-10
+	* 1.1.8 released.
+	* To enable ringbuffer and serial port finder with C++.
+
+2014-08-27
+	* 1.1.7 released.
+	* Changed argument for start_measurement 0 to URG_SCAN_INFINITY on sample.
+
+2014-07-17
+	* 1.1.6 released.
+	* Fixed compile error on Mac OS.
+
+2014-06-05
+	* 1.1.5 released.
+	* Added include on "urg_serial_linux.c"
+
+2014-05-19
+	* 1.1.4 released.
+	* Fixed sample code crashed when cannot receive data.
+
+2013-09-05
+	* 1.1.3 released.
+	* Changed serial communication setting to handle UST sensor.
+
+2013-08-26
+	* 1.1.2 released.
+	* Changed to make dynamic library.
+    * Fixed link error on Linux.
+
+2013-07-16
+	* 1.1.1 released.
+	* Fixed SCIP 1.1 sensor problem.
+
+2013-06-25
+	* 1.1.0 released.
+	* Added C++ Wrapper.
+	* Added Visual Studio 2010 project.
+
+2012-02-21
+	* 1.0.4 released.
+	* Fixed ethernet open problem.
+	* Fixed laser off fail when "urg_close()" function has called.
+
+2012-01-31
+	* 1.0.3 released.
+	* Fixed Macintosh implementation to work. (reported Adrian Boeing)

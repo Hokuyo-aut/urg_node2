@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>urg_node2</name>
+  <version>1.0.0</version>
+  <description>Hokuyo 2D LiDAR driver</description>
+  <maintainer email="f-wada@hokuyo-aut.co.jp">Fumihiko Wada</maintainer>
+  <maintainer email="embedded-ros@esol.co.jp">Tomonori Okazaki</maintainer>
+  <author email="f-wada@hokuyo-aut.co.jp">Fumihiko Wada</author>
+  <author email="embedded-ros@esol.co.jp">Tomonori Okazaki</author>
+  <license>Apache License 2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclcpp_components</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <depend>lifecycle_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>diagnostic_updater</depend>
+  <depend>laser_proc</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

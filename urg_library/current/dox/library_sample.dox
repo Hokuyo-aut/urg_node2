@@ -1,0 +1,70 @@
+/*!
+  \~japanese
+  \page library_sample_page ライブラリのサンプルについて
+
+  ライブラリ付属サンプルの使い方を説明しています。
+
+  \~english
+  \page library_sample_page Library samples (under construction)
+
+  ライブラリ付属サンプルの使い方を説明しています。
+
+
+  \~japanese
+  \section library_tutorial_samples ライブラリ付属のサンプル
+
+  urg_library は、いくつかのサンプルを用意しています。\n
+  サンプルの接続するデバイスを変更するには open_urg_sensor.c の下記の設定を変更して下さい。\n
+  (シリアル接続の場合は、サンプルで"COM3"としている部分をデバイスマネージャー等で確認したCOM番号に変更してください)
+
+  - 接続設定を変更する箇所 (open_urg_sensor.c より抜粋)
+    \dontinclude open_urg_sensor.c
+    \skip int open_urg_sensor
+    \until const char *ip_address
+
+  また、各サンプルは "-e" を付加するとイーサーネットで接続するようになっています。\n
+  イーサーネット接続での実行コマンド例
+
+  \verbatim
+  ./get_distance -e
+  \endverbatim
+
+  - サンプル一覧
+    - センサ情報を表示するサンプル ... \ref sensor_parameter.c
+    - 距離のデータを取得するサンプル ... \ref get_distance.c
+    - 距離と強度のデータを取得するサンプル ... \ref get_distance_intensity.c
+    - マルチエコーで距離のデータを取得するサンプル ... \ref get_multiecho.c
+    - マルチエコーで距離と強度のデータを取得するサンプル ... \ref get_multiecho_intensity.c
+    - 計測したデータを X-Y 座標に変換するサンプル ... \ref calculate_xy.c
+    - センサのタイムスタンプを PC と同期させるサンプル ... \ref sync_time_stamp.c
+    - シリアルポート一覧の取得サンプル ... \ref find_port.c
+
+  \~english
+  \section library_tutorial_samples Library samples (under construction)
+
+  urg_library は、いくつかのサンプルを用意しています。\n
+  サンプルの接続するデバイスを変更するには open_urg_sensor.c の下記の設定を変更して下さい。\n
+  (シリアル接続の場合は、サンプルで"COM3"としている部分をデバイスマネージャー等で確認したCOM番号に変更してください)
+
+  - 接続設定を変更する箇所 (open_urg_sensor.c より抜粋)
+    \dontinclude open_urg_sensor.c
+    \skip int open_urg_sensor
+    \until const char *ip_address
+
+  また、各サンプルは "-e" を付加するとイーサーネットで接続するようになっています。\n
+  イーサーネット接続での実行コマンド例
+
+  \verbatim
+  ./get_distance -e
+  \endverbatim
+
+  - サンプル一覧
+    - センサ情報を表示するサンプル ... \ref sensor_parameter.c
+    - 距離のデータを取得するサンプル ... \ref get_distance.c
+    - 距離と強度のデータを取得するサンプル ... \ref get_distance_intensity.c
+    - マルチエコーで距離のデータを取得するサンプル ... \ref get_multiecho.c
+    - マルチエコーで距離と強度のデータを取得するサンプル ... \ref get_multiecho_intensity.c
+    - 計測したデータを X-Y 座標に変換するサンプル ... \ref calculate_xy.c
+    - センサのタイムスタンプを PC と同期させるサンプル ... \ref sync_time_stamp.c
+    - シリアルポート一覧の取得サンプル ... \ref find_port.c
+*/
