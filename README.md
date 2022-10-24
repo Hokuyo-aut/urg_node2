@@ -18,17 +18,17 @@ The operation in each state of the life cycle is as follows
 - Unconfigured  
   startup state
 - Inactive  
-  LiDAR connection stateÅinot delivered scanning data and diagnostic informationÅj
+  LiDAR connection stateÔºànot delivered scanning data and diagnostic informationÔºâ
 - Active  
-  LiDAR data delivery stateÅidelivered scanning data and diagnostic informationÅj
+  LiDAR data delivery stateÔºàdelivered scanning data and diagnostic informationÔºâ
 - Finalized  
   end state
 
 # Supported models
 Hokuyo's SCIP 2.2-compliant LiDAR
-Tested modelsÅF`UTM-30LX-EW`, `UST-10LX`, `UTM-30LX`, `URG-04LX-UG01`
+Tested modelsÔºö`UTM-30LX-EW`, `UST-10LX`, `UTM-30LX`, `URG-04LX-UG01`
 
-Tested EnvironmentÅF`foxy`, `galactic`
+Tested EnvironmentÔºö`foxy`, `galactic`
 
 # License
 `Apache License 2.0`
@@ -50,8 +50,8 @@ The urg_libray C API is licensed under the `Simplified BSD License`.
 
 # Parameters
 - ip_address (string, default: "")  
-  IP address for Ethernet connectionÅiSpecify in the format "XX.XX.XX.XX.XX"Åj  
-  Å¶If the specified string is empty, a serial connection is selected
+  IP address for Ethernet connectionÔºàSpecify in the format "XX.XX.XX.XX.XX"Ôºâ  
+  ‚ÄªIf the specified string is empty, a serial connection is selected
 - ip_port (int, default: 10940)  
   Port number for Ethernet connection
 - serial_port (string, default: "/dev/ttyACM0")  
@@ -81,22 +81,22 @@ The urg_libray C API is licensed under the `Simplified BSD License`.
 - error_reset_period (double, default: 5.0 [sec])  
   Error reset cycle 
   Periodically resets the number of errors that occurred during data acquisition.  
-  Å¶To prevent reconnection in case of sporadic errors
+  ‚ÄªTo prevent reconnection in case of sporadic errors
 - diagnostics_tolerance (double, default: 0.05)  
   Allowable percentage of diagnostic information on frequency of scan data delivery relative to target delivery frequency  
-  Å¶For example, if diagnostics_tolerance is 0.05, the normal range is 105% to 95% of the target delivery frequency.
+  ‚ÄªFor example, if diagnostics_tolerance is 0.05, the normal range is 105% to 95% of the target delivery frequency.
 - diagnostics_window_time (double, default: 5.0 [sec])  
   Period to measure the frequency of output delivery of diagnostic information on the frequency of scan data delivery.
 - time_offset (double, default: 0.0 [sec])  
   User latency to be added to timestamp of scan data
-- angle_min (double, defaultÅF-pi [rad], rangeÅF-piÅ`pi)  
+- angle_min (double, defaultÔºö-pi [rad], rangeÔºö-piÔΩûpi)  
   Minimum angle of scan data output range
-- angle_max (double, defaultÅFpi [rad], rangeÅF-piÅ`pi)  
+- angle_max (double, defaultÔºöpi [rad], rangeÔºö-piÔΩûpi)  
   Maximum angle of scan data output range
-- skip (int, default: 0 [count], range: 0Å`9)  
+- skip (int, default: 0 [count], range: 0ÔΩû9)  
   Output thinning setting for scanned data  
   The frequency of scanned data delivery is multiplied by 1/(skip+1).  
-- cluster (int, default: 1 [count], range: 1Å`99)  
+- cluster (int, default: 1 [count], range: 1ÔΩû99)  
   Scan data grouping settings 
   The number of data in the scan data is multiplied by 1/cluster.
 
@@ -106,7 +106,7 @@ The urg_libray C API is licensed under the `Simplified BSD License`.
 
 ```
 $ cd <ROS2_workspace>/src
-$ git clone --recursive https://github.com/UrgNetworks/urg_node2.git
+$ git clone --recursive https://github.com/Hokuyo-aut/urg_node2.git
 ```
 
 2. Installing Related Packages
@@ -140,7 +140,7 @@ $ colcon test
    Connect via Ethernet or USB. 
 1. Set the connection destination (parameters)   
    Edit `config/params_ether.yaml` (for Ethernet connections)   
-   Å¶If you use USB connection, edit `config/params_serial.yaml' and change the parameter file specification part of `launch/urg_node2.launch.py` to params_serial.yaml.
+   ‚ÄªIf you use USB connection, edit `config/params_serial.yaml' and change the parameter file specification part of `launch/urg_node2.launch.py` to params_serial.yaml.
 1. Node startup
    Execute the following command to automatically transition to the Active state and begin distribution of scan data.
 
