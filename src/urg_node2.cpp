@@ -447,7 +447,7 @@ void UrgNode2::scan_thread()
     is_stable_ = urg_is_stable(&urg_);
 
     // 計測開始
-    int ret = urg_start_measurement(&urg_, measurement_type_, 0, skip_);
+    int ret = urg_start_measurement(&urg_, measurement_type_, 0, skip_, 0);
     if (ret < 0) {
       RCLCPP_WARN(get_logger(), "Could not start Hokuyo measurement\n%s", urg_error(&urg_));
 
@@ -774,7 +774,7 @@ bool UrgNode2::is_intensity_supported(void)
     return false;
   }
 
-  if (urg_start_measurement(&urg_, URG_DISTANCE_INTENSITY, 0, 0) < 0) {
+  if (urg_start_measurement(&urg_, URG_DISTANCE_INTENSITY, 0, 0, 0) < 0) {
     RCLCPP_WARN(get_logger(), "Could not start Hokuyo measurement\n%s", urg_error(&urg_));
     return false;
   }
@@ -798,7 +798,7 @@ bool UrgNode2::is_multiecho_supported(void)
     return false;
   }
 
-  if (urg_start_measurement(&urg_, URG_MULTIECHO_INTENSITY, 0, 0) < 0) {
+  if (urg_start_measurement(&urg_, URG_MULTIECHO_INTENSITY, 0, 0, 0) < 0) {
     RCLCPP_WARN(get_logger(), "Could not start Hokuyo measurement\n%s", urg_error(&urg_));
     return false;
   }
@@ -919,7 +919,7 @@ rclcpp::Duration UrgNode2::get_time_stamp_offset(size_t num_measurements)
   }
 
   // 計測開始
-  int ret = urg_start_measurement(&urg_, measurement_type_, 0, skip_);
+  int ret = urg_start_measurement(&urg_, measurement_type_, 0, skip_, 0);
   if (ret < 0) {
     std::stringstream ss;
     ss << "Could not start Hokuyo measurement.\n";
