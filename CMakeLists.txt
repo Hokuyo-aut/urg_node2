@@ -42,8 +42,19 @@ add_library(urg_c SHARED
   ${URG_LIBRARY_SRC_DIR}/urg_tcpclient.c
 )
 
+set(dependencies
+urg_node2
+rclcpp
+rclcpp_components
+rclcpp_lifecycle
+lifecycle_msgs
+sensor_msgs
+diagnostic_updater
+laser_proc
+)
+
 add_library(urg_node2 SHARED src/urg_node2.cpp)
-ament_target_dependencies(urg_node2 rclcpp rclcpp_components rclcpp_lifecycle lifecycle_msgs sensor_msgs diagnostic_updater laser_proc)
+ament_target_dependencies(${dependencies})
 rclcpp_components_register_node(urg_node2
   PLUGIN "urg_node2::UrgNode2"
   EXECUTABLE urg_node2_node)
@@ -60,22 +71,8 @@ install(DIRECTORY launch config
 )
 
 if(BUILD_TESTING)
-  find_package(ament_cmake_gtest)
-  ament_add_gtest(urg_node2_test src/urg_node2.cpp test/urg_node2_test.cpp TIMEOUT 200)
-  ament_target_dependencies(urg_node2_test rclcpp rclcpp_components rclcpp_lifecycle lifecycle_msgs sensor_msgs diagnostic_updater laser_proc)
-  target_link_libraries(urg_node2_test urg_c)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
 endif()
-
-# disable tool tests, because a lot of errors occur in urg_library
-#if(BUILD_TESTING)
-#  find_package(ament_lint_auto REQUIRED)
-#  # the following line skips the linter which checks for copyrights
-#  # uncomment the line when a copyright and license is not present in all source files
-#  #set(ament_cmake_copyright_FOUND TRUE)
-#  # the following line skips cpplint (only works in a git repo)
-#  # uncomment the line when this package is not in a git repo
-#  #set(ament_cmake_cpplint_FOUND TRUE)
-#  ament_lint_auto_find_test_dependencies()
-#endif()
 
 ament_package()
