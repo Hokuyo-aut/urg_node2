@@ -518,6 +518,7 @@ void UrgNode2::scan_thread()
           RCLCPP_WARN(get_logger(), "Could not get multi echo scan.");
           error_count_++;
           total_error_count_++;
+          prev_time = system_clock.now();
           device_status_ = urg_sensor_status(&urg_);
           sensor_status_ = urg_sensor_state(&urg_);
           is_stable_ = urg_is_stable(&urg_);
@@ -533,6 +534,7 @@ void UrgNode2::scan_thread()
           RCLCPP_WARN(get_logger(), "Could not get single echo scan.");
           error_count_++;
           total_error_count_++;
+          prev_time = system_clock.now();
           device_status_ = urg_sensor_status(&urg_);
           sensor_status_ = urg_sensor_state(&urg_);
           is_stable_ = urg_is_stable(&urg_);
@@ -548,10 +550,8 @@ void UrgNode2::scan_thread()
         break;
       } else {
         // エラーカウントのリセット
-        rclcpp::Time current_time = system_clock.now();
-        rclcpp::Duration period = current_time - prev_time;
+        rclcpp::Duration period = system_clock.now() - prev_time;
         if (period.seconds() >= error_reset_period_) {
-          prev_time = current_time;
           error_count_ = 0;
         }
       }
