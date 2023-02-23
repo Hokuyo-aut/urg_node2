@@ -484,6 +484,7 @@ void UrgNode2::scan_thread()
           RCLCPP_WARN(get_logger(), "Could not get multi echo scan.");
           error_count_++;
           total_error_count_++;
+          prev_time = system_clock.now();
           device_status_ = urg_sensor_status(&urg_);
           sensor_status_ = urg_sensor_state(&urg_);
           is_stable_ = urg_is_stable(&urg_);
