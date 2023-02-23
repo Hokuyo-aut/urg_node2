@@ -319,7 +319,23 @@ bool UrgNode2::connect()
   }
   // 接続先のLiDARがマルチエコー出力に対応しているか
   if (publish_multiecho_) {
-    use_multiecho_ = is_multiecho_supported();
+    // try to init multiecho mode
+    error_count_ = 0;
+    while (rclcpp::ok()) {
+      RCLCPP_INFO(get_logger(), "Trying to init multiecho mode");
+      if (is_multiecho_supported()) {
+        RCLCPP_INFO(get_logger(), "Multiecho mode init success");
+        use_multiecho_ = true;
+        break;
+      }
+      RCLCPP_WARN(get_logger(), "Failed to init multiecho mode");
+      error_count_ += 1;
+      if (error_count_ > error_limit_) {
+        error_count_ = 0;
+        use_multiecho_ = false;
+        break;
+      }
+    }
     if (!use_multiecho_) {
       RCLCPP_WARN(
         get_logger(),
@@ -828,6 +844,8 @@ bool UrgNode2::is_multiecho_supported(void)
   int ret = urg_get_multiecho(&urg_, &distance_[0], NULL);
   if (ret <= 0) {
     // マルチエコー出力非対応
+    urg_stop_measurement(&urg_);
+    is_measurement_started_ = false;
     return false;
   }
 
