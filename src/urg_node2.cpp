@@ -308,7 +308,7 @@ bool UrgNode2::connect()
       if (error_count_ > error_limit_) {
         error_count_ = 0;
         use_intensity_ = false;
-        break
+        break;
       }
     }
     if (!use_intensity_) {
