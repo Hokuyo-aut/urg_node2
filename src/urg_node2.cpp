@@ -53,6 +53,7 @@ UrgNode2::UrgNode2(const rclcpp::NodeOptions & node_options)
   angle_max_ = declare_parameter<double>("angle_max", M_PI);
   skip_ = declare_parameter<int>("skip", 0);
   cluster_ = declare_parameter<int>("cluster", 1);
+  status_update_delay_ = declare_parameter<double>("status_update_delay", 10.0);
 }
 
 // デストラクタ
@@ -215,6 +216,8 @@ void UrgNode2::initialize()
   angle_max_ = get_parameter("angle_max").as_double();
   skip_ = get_parameter("skip").as_int();
   cluster_ = get_parameter("cluster").as_int();
+  status_update_delay_ = get_parameter("status_update_delay").as_double();
+
 
   // 範囲チェック
   angle_min_ = (angle_min_ < -M_PI) ? -M_PI : ((angle_min_ > M_PI) ? M_PI : angle_min_);
@@ -497,7 +500,7 @@ void UrgNode2::scan_thread()
 
     rclcpp::Clock system_clock(RCL_SYSTEM_TIME);
     rclcpp::Time prev_time = system_clock.now();
-
+    rclcpp::Time last_status_update = this->now();
     while (!close_thread_) {
       // Inactive状態判定
       rclcpp_lifecycle::State state = get_current_state();
@@ -526,6 +529,11 @@ void UrgNode2::scan_thread()
       } else {
         sensor_msgs::msg::LaserScan msg;
         if (create_scan_message(msg)) {
+          if (this->now() - last_status_update > rclcpp::Duration::from_seconds(status_update_delay_)) {
+            device_status_ = urg_sensor_status(&urg_);
+            is_stable_ = device_status_.compare(SENSOR_OK) == 0;
+            last_status_update = this->now();
+          }
           scan_pub_->publish(msg);
           if (scan_freq_) {
             scan_freq_->tick();

@@ -58,6 +58,7 @@ using namespace std::chrono_literals;
 
 namespace urg_node2
 {
+static const std::string SENSOR_OK = "Sensor works well.";
 
 class UrgNode2 : public rclcpp_lifecycle::LifecycleNode
 {
@@ -325,6 +326,8 @@ private:
   int skip_;
   /** パラメータ"cluster" : グルーピング設定 */
   int cluster_;
+  /** how long between reading the sensor status */
+  double status_update_delay_;
 
   /** デバイス状態 : urg_sensor_status()の値を格納 */
   std::string device_status_;
