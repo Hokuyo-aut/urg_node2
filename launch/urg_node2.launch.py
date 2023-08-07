@@ -16,10 +16,10 @@ import os
 import launch
 import yaml
 from ament_index_python.packages import get_package_share_directory
-from launch import LaunchDescription
+from launch import LaunchDescription, LaunchContext
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
-from launch.actions import (DeclareLaunchArgument, EmitEvent, RegisterEventHandler)
+from launch.actions import (DeclareLaunchArgument, EmitEvent, RegisterEventHandler, OpaqueFunction)
 from launch.event_handlers import OnProcessStart
 from launch.events import matches_action
 from launch_ros.actions import LifecycleNode
@@ -27,17 +27,11 @@ from launch_ros.event_handlers import OnStateTransition
 from launch_ros.events.lifecycle import ChangeState
 from lifecycle_msgs.msg import Transition
 
-def generate_launch_description():
+def launch_setup(context: LaunchContext, config_file_path):
+    # Convert to string
+    config_file_path_str = context.perform_substitution(config_file_path)
 
-    # パラメータファイルのパス設定
-    config_file_path = os.path.join(
-        get_package_share_directory('urg_node2'),
-        'config',
-        'params_ether.yaml'
-    )
-
-    # パラメータファイルのロード
-    with open(config_file_path, 'r') as file:
+    with open(config_file_path_str, 'r') as file:
         config_params = yaml.safe_load(file)['urg_node2']['ros__parameters']
 
     # urg_node2をライフサイクルノードとして起動
@@ -85,6 +79,25 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('auto_start')),
     )
 
+    return [lifecycle_node,
+        urg_node2_node_configure_event_handler,
+        urg_node2_node_activate_event_handler]
+
+def generate_launch_description():
+
+    # パラメータファイルのパス設定
+    config_file_path_default = os.path.join(
+        get_package_share_directory('urg_node2'),
+        'config',
+        'params_ether.yaml'
+    )
+    config_file_path = LaunchConfiguration('config_file_path')
+    config_file_path_launch_arg = DeclareLaunchArgument(
+        'config_file_path',
+        default_value=config_file_path_default
+    )
+
+
     # パラメータについて
     # auto_start      : 起動時自動でActive状態まで遷移 (default)true
     # node_name       : ノード名 (default)"urg_node2"
@@ -93,8 +106,7 @@ def generate_launch_description():
         DeclareLaunchArgument('auto_start', default_value='true'),
         DeclareLaunchArgument('node_name', default_value='urg_node2'),
         DeclareLaunchArgument('scan_topic_name', default_value='scan'),
-        lifecycle_node,
-        urg_node2_node_configure_event_handler,
-        urg_node2_node_activate_event_handler,
+        config_file_path_launch_arg,
+        OpaqueFunction(function = launch_setup, args=[config_file_path])
     ])
 
