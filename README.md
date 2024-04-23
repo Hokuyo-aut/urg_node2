@@ -26,9 +26,9 @@ The operation in each state of the life cycle is as follows
 
 # Supported models
 Hokuyo's SCIP 2.2-compliant LiDAR
-Tested models：`UTM-30LX-EW`, `UST-10LX`, `UTM-30LX`, `URG-04LX-UG01`
+Tested models: `UTM-30LX-EW`, `UST-10LX`, `UTM-30LX`, `URG-04LX-UG01`, `UAM-05LP`, `UAM-05LPA`
 
-Tested Environment：`foxy`, `galactic`
+Tested Environments: `foxy`, `galactic`, `humble`
 
 # License
 `Apache License 2.0`
