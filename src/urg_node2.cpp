@@ -509,6 +509,7 @@ void UrgNode2::scan_thread()
       if (error_count_ > error_limit_) {
         RCLCPP_ERROR(get_logger(), "Error count exceeded limit, reconnecting.");
         // 再接続処理
+        is_measurement_started_ = false;
         reconnect();
         reconnect_count_++;
         break;
